@@ -13,6 +13,7 @@ function createTask(event) {
     const item = document.createElement('li');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.addEventListener('change', completeTask);
 
     const label = document.createElement('label');
     label.textContent = text;
@@ -31,4 +32,9 @@ input.addEventListener("input", toggleButton);
 
 function toggleButton() {
     button.disabled = input.value.trim().length === 0;
+}
+
+function completeTask(event) {
+    const item = event.target.parentElement;
+    list.removeChild(item);
 }
